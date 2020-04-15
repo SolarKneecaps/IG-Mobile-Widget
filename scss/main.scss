@@ -160,7 +160,8 @@
     }
     &__bottom-drawer{
         @include Flex-Center(column);
-        width: 500px;
+        width: 90%;
+        max-width: 450px;
         @include Bold-Font();
         font-size: 0.85em;
         z-index: 5;
