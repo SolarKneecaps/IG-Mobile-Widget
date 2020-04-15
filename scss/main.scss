@@ -1,0 +1,220 @@
+@import './variables';
+@import './resets';
+@import './mixins';
+
+.main{
+    font-family: 'Montserrat', sans-serif;
+    background: $primary-light;
+    @include Flex-Center(column);
+    overflow-x: hidden;
+    &__container{
+        margin: 0 auto;
+        @include Flex-Center(column);
+        max-width: 500px;
+        background: $primary-dark;
+        color: $primary-light;
+        &__header{
+            width: $container-width;
+            @include Flex-Center(row);
+            justify-content: flex-start;
+            padding: $primary-padding-bottom 0;
+            &__img-wrapper{
+                @include Flex-Center(row);
+                width: calc( #{$post-img-width-height} + 0.4em);
+                height: calc( #{$post-img-width-height} + 0.4em);
+                border-radius: 50%;
+                background: linear-gradient(to right, $primary-red, $primary-orange)
+            }
+            &__img{
+                width: $post-img-width-height;
+                height: $post-img-width-height;
+                border-radius: 50%;
+                border: 0.1em solid $primary-dark;
+            }
+            &__text{
+                margin-left: 0.5em;
+                &__name{
+                    @include Bold-Font();
+                }
+                &__location{
+                    @include Misc-Font();
+                }
+            }
+            &__morebtn{
+                margin-left: auto;
+                @include Bold-Font();
+                font-size: 1.5rem;
+                background: $primary-dark;
+                color: $primary-light;
+                border: none;
+                font-family: 'Montserrat', sans-serif;
+                :hover{
+                    cursor: pointer;
+                }
+            }
+        }
+        &__img{
+            width: $max-width;
+            margin-bottom: $primary-margin-bottom;
+        }
+        &__icons{
+            @include Flex-Center(row);
+            justify-content: flex-start;
+            width: $container-width;
+            margin-bottom: $primary-margin-bottom;
+            i{
+                &:focus,
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+            &__heart,
+            &__comment,
+            &__share{
+                padding-right: 0.75em
+            }
+            &__save{
+                margin-left: auto;
+            }
+        }
+        &__views{
+            @include Bold-Font();
+            align-self: flex-start;
+            margin-left: 2.5%;
+            margin-bottom: $primary-margin-bottom;
+        }
+        &__text{
+            width: $container-width;
+            margin-bottom: $primary-margin-bottom;
+            &__name{
+                @include Bold-Font();
+            }
+            &__disc{
+                @include Misc-Font();
+                font-size: 0.75rem;
+            }
+        }
+        &__comments{
+            @include Flex-Center(column);
+            width: $container-width;
+            align-items: flex-start;
+            &__view-all{
+                @include Misc-Font();
+                color: $primary-grey;
+                margin-bottom: $primary-margin-bottom;
+            }
+            &__container{
+                @include Flex-Center(row);
+                margin-bottom: $primary-margin-bottom;
+                &__name{
+                    @include Bold-Font();
+                }
+                &__text{
+                    @include Misc-Font();
+                font-size: 0.75rem;
+                }
+                &__heart{
+                    margin-left: 0.75em;
+                }
+            }
+        }
+        &__post{
+            @include Flex-Center(row);
+            width: $container-width;
+            justify-content: flex-start;
+            position: relative;
+            margin-bottom: $primary-margin-bottom;
+            &__img{
+                width: 30px;
+                border-radius: 50%;
+                padding-right: 0.5em;
+            }
+            &__input{
+                border: 1px solid $primary-grey;
+                background: $primary-dark;
+                flex: 1;
+                padding: 0 1.50em 0 0.75em;
+                height: 2em;
+                color: $primary-light;
+                border-radius: 100vh;
+                outline: none;
+            }
+            &__postbtn{
+               position: absolute;
+               top: 0.75em;
+               right: 0.75em;
+               &:hover,
+               &:focus{
+                   cursor: pointer;
+                   color: red;
+               }
+            }
+        }
+        &__upload-time{
+            @include Misc-Font();
+            color: $primary-grey;
+            align-self: flex-start;
+            margin-left: 2.5%;
+            margin-bottom: $primary-margin-bottom;
+        }
+    }
+    &__bottom-drawer{
+        @include Flex-Center(column);
+        width: 500px;
+        @include Bold-Font();
+        font-size: 0.85em;
+        z-index: 5;
+        position: fixed;
+        bottom: 5%;
+        transform: translateY(110%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 500ms ease, opacity 500ms ease, visibility 500ms ease;
+        &__menu{
+            overflow: hidden;
+            text-align: center;
+            text-decoration: none;
+            width: $container-width;
+            background: $primary-dark-grey;
+            color: $primary-light;
+            border-radius: 15px;
+            margin-bottom: $primary-margin-bottom;
+            box-shadow: 0 0 0 1000px rgba(0,0,0, 0.25);
+            &__container__option{
+                list-style: none;
+                padding: 1.5em 0;
+                border-bottom: 1px solid $primary-light;
+                &:first-child{
+                    color: $primary-red;
+                }
+                &:last-child{
+                    border-bottom: none;;
+                }
+                &:hover{
+                    background: $primary-grey;
+                    cursor: pointer;
+                }
+            }
+        }
+        &__cancel{
+            width: $container-width;
+            text-align: center;
+            background: $primary-dark-grey;
+            color: $primary-light;
+            border-radius: 15px;
+            padding: 1.5em 0;
+            &:hover{
+                background: $primary-grey;
+                cursor: pointer;
+            }
+        }
+    }
+    &__bottom-drawer-visible{
+        transition: transform 500ms ease;
+        transform: translate(0%);
+        opacity: 1;
+        visibility: visible;
+        
+    }
+}
+
